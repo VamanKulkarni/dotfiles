@@ -1,0 +1,46 @@
+filetype off                  " required
+set t_Co=256
+
+set modeline
+set tabstop=4 
+set shiftwidth=4 
+set expandtab
+set hlsearch
+set smartcase
+autocmd BufNewFile,BufRead *.ts  set filetype=typescript
+syntax on
+
+set autoindent
+set number
+set hidden
+set wildmenu
+set autowrite
+set autoread
+set ignorecase
+set splitbelow
+set splitright
+set synmaxcol=120
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'nanotech/jellybeans.vim'
+    Plugin 'Shougo/deoplete.nvim'
+    Plugin 'zchee/deoplete-jedi'
+    Plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
+    Plugin 'artur-shaik/vim-javacomplete2'
+
+call vundle#end()            " required
+
+filetype plugin indent on    " required
+
+colorscheme jellybeans
+imap jk <Esc>
+
+nnoremap <Leader>p :set paste!<CR>
+
+let g:deoplete#enable_at_startup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+autocmd CompleteDone * silent! pclose!
