@@ -1,13 +1,11 @@
 filetype off                  " required
 set t_Co=256
-
 set modeline
 set tabstop=4 
 set shiftwidth=4 
 set expandtab
 set hlsearch
 set smartcase
-autocmd BufNewFile,BufRead *.ts  set filetype=typescript
 syntax on
 
 set autoindent
@@ -20,6 +18,7 @@ set ignorecase
 set splitbelow
 set splitright
 set synmaxcol=120
+set encoding=utf-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -29,16 +28,18 @@ call vundle#begin()
     Plugin 'zchee/deoplete-jedi'
     Plugin 'roxma/nvim-yarp'
     Plugin 'roxma/vim-hug-neovim-rpc'
-    Plugin 'artur-shaik/vim-javacomplete2'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()            " required
 
 filetype plugin indent on    " required
 
-colorscheme jellybeans
+silent! colorscheme jellybeans
 imap jk <Esc>
 
 nnoremap <Leader>p :set paste!<CR>
+nnoremap <Leader>h :nohl<CR>
 
 let g:deoplete#enable_at_startup = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
